@@ -10,7 +10,7 @@ public:
 	//Constuctor
 	Person(string a_name, int a_age);
 	//Destructor
-	virtual ~Person();
+	virtual ~Person() = default;
 	//Getters
 	virtual string getName();
 	virtual int getAge();
@@ -31,19 +31,17 @@ public:
 	//Constuctor
 	Student(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester) : Person(a_name, a_age)
 	{
-		m_name = a_name;
-		m_age = a_age;
 		SetPerson(a_name, a_age);
-		m_collegeName = a_collegeName;
-		m_programName = a_programName;
-		m_currentSemester = a_currentSemester;
+		setCollegeName(a_collegeName);
+		setProgramName(a_programName);
+		setCurrentSemster(a_currentSemester);
 	}
 	//Destructor
-	~Student();
+	~Student() override = default;
 	//Getters
-	string getCollegeName();
-	string getProgramName();
-	int getCurrentSemster();
+	string getCollegeName() const;
+	string getProgramName() const;
+	int getCurrentSemster() const;
 	//Setters
 	void setCollegeName(string name);
 	void setProgramName(string name);
@@ -64,19 +62,18 @@ public:
 	NonGamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_streamingService, float a_hoursSpent) 
 	: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{
-		m_name = a_name;
-		m_age = a_age;
-		m_collegeName = a_collegeName;
-		m_programName = a_programName;
-		m_currentSemester = a_currentSemester;
-		m_streamingService = a_streamingService;
-		m_hoursSpentStreaming = a_hoursSpent;
+		SetPerson(a_name, a_age);
+		setCollegeName(a_collegeName);
+		setProgramName(a_programName);
+		setCurrentSemster(a_currentSemester);
+		setStreamingService(a_streamingService);
+		setHoursSpentStreaming(a_hoursSpent);
 	}
 	//Destructor
-	~NonGamingStudent();
+	~NonGamingStudent() override = default;
 	//Getters
-	string getStreamingService();
-	float getHoursSpentStreaming();
+	string getStreamingService() const;
+	float getHoursSpentStreaming() const;
 	//Setters
 	void setStreamingService(string name);
 	void setHoursSpentStreaming(float hours);
@@ -94,19 +91,18 @@ public:
 	GamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_gamingPlatform, float a_hoursSpent)
 		: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{
-		m_name = a_name;
-		m_age = a_age;
-		m_collegeName = a_collegeName;
-		m_programName = a_programName;
-		m_currentSemester = a_currentSemester;
-		m_gamingPlatform = a_gamingPlatform;
-		m_hoursSpentGaming = a_hoursSpent;
+		SetPerson(a_name, a_age);
+		setCollegeName(a_collegeName);
+		setProgramName(a_programName);
+		setCurrentSemster(a_currentSemester);;
+		setGamingPlatform(a_gamingPlatform);
+		setHoursSpentGaming(a_hoursSpent);
 	}
 	//Destructor
-	~GamingStudent();
+	~GamingStudent() override = default;
 	//Getters
-	string getGamingPlatform();
-	float getHoursSpentGaming();
+	string getGamingPlatform() const;
+	float getHoursSpentGaming() const;
 	//Setters
 	void setGamingPlatform(string name);
 	void setHoursSpentGaming(float hours);
