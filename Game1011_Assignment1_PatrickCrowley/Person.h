@@ -17,6 +17,7 @@ public:
 	//Setters
 	virtual void setName(string name);
 	virtual void setAge(int age);
+	virtual void SetPerson(string name, int age) = 0;
 
 protected:
 	string m_name;
@@ -32,6 +33,7 @@ public:
 	{
 		m_name = a_name;
 		m_age = a_age;
+		SetPerson(a_name, a_age);
 		m_collegeName = a_collegeName;
 		m_programName = a_programName;
 		m_currentSemester = a_currentSemester;
@@ -46,6 +48,7 @@ public:
 	void setCollegeName(string name);
 	void setProgramName(string name);
 	void setCurrentSemster(int semester);
+	void SetPerson(string name, int age) override;
 
 protected:
 	string m_collegeName;
