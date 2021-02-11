@@ -1,6 +1,13 @@
 #include "Person.h"
 //setters
 
+Person::Person(string a_name, int a_age)
+{
+	m_name = a_name;
+	m_age = a_age;
+	
+}
+
 //Person
 string Person::getName()
 {
@@ -28,12 +35,6 @@ void Student::setCurrentSemster(int semester)
 	m_currentSemester = semester;
 }
 
-void Student::SetPerson(string name, int age)
-{
-	m_name = name;
-	m_age = age;
-}
-
 //Non Gaming Student
 void NonGamingStudent::setStreamingService(string name)
 {
@@ -44,6 +45,7 @@ void NonGamingStudent::setHoursSpentStreaming(float hours)
 {
 	m_hoursSpentStreaming = hours;
 }
+
 
 //Gaming Student
 void GamingStudent::setGamingPlatform(string name)
