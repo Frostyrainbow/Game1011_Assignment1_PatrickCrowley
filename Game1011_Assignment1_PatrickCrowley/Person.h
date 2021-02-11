@@ -52,11 +52,16 @@ public:
 	void setCollegeName(string name);
 	void setProgramName(string name);
 	void setCurrentSemster(int semester);
+	//Overrides
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
 			<< getProgramName();
 	}
+	string getStreamingService() override {};
+	float getHoursSpentStreaming() override {};
+	string getGamingPlatform() override {};
+	float getHoursSpentGaming() override {};
 
 protected:
 	string m_collegeName;
