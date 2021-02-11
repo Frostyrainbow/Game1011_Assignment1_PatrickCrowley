@@ -24,10 +24,15 @@ private:
 	int m_randNumb;
 	string m_names[10] = {"John Doe", "Bob Ross", "Johnny Silverhand", "Geralt of Rivia", "Valerie Valentine", "Nathan Drake", "Master Chief", "Leon Kennedy", "Ezio Auditore", "Doom Slayer"};
 	string m_college[5] = { "George Brown", "Centennial", "Seneca", "Algonquin", "Fanshawe" };
+	string m_streaming[5] = { "Netflix", "Disney+", "YouTube", "TikTok", "Hulu" };
+	string m_gaming[4] = { "Xbox One X", "Playstation 4", "Nintendo Switch", "PC" };
 	string m_program[6] = { "Game Developement", "Game Design", "Game Programming", "Business Financing", "Genetics", "Architecture" };
 	int m_age[5] = { 18, 19, 20, 21, 22 };
 	int studentNumb[2] = { 0, 0 };
+	int studentAge[2] = { 0, 0 };
+	int studentHours[2] = { 0,0 };
 	int favService[5] = { 0, 0, 0, 0, 0 };
 	int favPlatform[4] = { 0, 0, 0, 0 };
+	int temp, tempLoc, temp2, tempLoc2;
 };
 

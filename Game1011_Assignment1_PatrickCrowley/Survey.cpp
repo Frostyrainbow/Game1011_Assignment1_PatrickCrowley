@@ -36,7 +36,7 @@ void Survey::setSurvey(int surveyNumb, int randNumb, string names[], int ages[],
 	
 }
 
-void Survey::DisplaySurvey()
+void Survey::DisplaySurvey() //for testing and debugging purposes
 {
 	for(int i = 0; i < m_surveyNumber; i++)
 	{
@@ -59,6 +59,8 @@ void Survey::Process()
 		}
 		if(Students[i]->GetStudentType() == NONGAMINGSTUDENT)
 		{
+			studentAge[0] += Students[i]->getAge();
+			studentHours[0] += Students[i]->getHoursSpent();
 			studentNumb[0]++;
 			switch(Students[i]->GetStreamingService())
 			{
@@ -82,6 +84,8 @@ void Survey::Process()
 		}
 		if (Students[i]->GetStudentType() == GAMINGSTUDENT)
 		{
+			studentAge[1] += Students[i]->getAge();
+			studentHours[1] += Students[i]->getHoursSpent();
 			studentNumb[1]++;
 			switch(Students[i]->GetGamingPlatform())
 			{
@@ -100,8 +104,59 @@ void Survey::Process()
 			}
 		}
 	}
+	temp = favService[0];
+	for(int i = 1; i <= 4; i++)
+	{
+		if(temp < favService[i])
+		{
+			temp = favService[i];
+			tempLoc = i;
+		}
+		if (temp == favService[i])
+		{
+			temp2 = favService[i];
+			tempLoc2 = i;
+		}
+	}
 	
-	
+	cout << "Number of Non Gaming Students: " << studentNumb[0] << "\nAverage Age: " << studentAge[0] / studentNumb[0];
+	if(tempLoc == tempLoc2)
+	{
+		cout << "\nFavorite Streaming Service: " << m_streaming[tempLoc] << "\nAverage Hours Spent Streaming: " << studentHours[0] / studentNumb[0] << "\n\n";
+	}
+	else if(tempLoc != tempLoc2)
+	{
+		cout << "\nFavorite Streaming Services: " << m_streaming[tempLoc] << " & " << m_streaming[tempLoc2] << " - It's a tie!\nAverage Hours Spent Streaming: " << studentHours[0] / studentNumb[0] << "\n\n";
+	}
+
+
+	temp = favPlatform[0];
+	tempLoc = 0;
+	temp2 = 0;
+	tempLoc2 = 0;
+	for (int i = 1; i <= 3; i++)
+	{
+		if (temp < favPlatform[i])
+		{
+			temp = favPlatform[i];
+			tempLoc = i;
+		}
+		if (temp == favPlatform[i])
+		{
+			temp2 = favPlatform[i];
+			tempLoc2 = i;
+		}
+	}
+
+	cout << "Number of Gaming Students: " << studentNumb[1] << "\nAverage Age: " << studentAge[1] / studentNumb[1];
+	if (tempLoc == tempLoc2)
+	{
+		cout << "\nFavorite Gaming Platform: " << m_gaming[tempLoc] << "\nAverage Hours Spent Gaming: " << studentHours[1] / studentNumb[1] << "\n\n";
+	}
+	else if (tempLoc != tempLoc2)
+	{
+		cout << "\nFavorite Gaming Platform: " << m_gaming[tempLoc] << " & " << m_gaming[tempLoc2] << " - It's a tie!\nAverage Hours Spent Gaming: " << studentHours[1] / studentNumb[1] << "\n\n";
+	}
 }
 
 //TODO: Delete, this was for testing and debugging purposes
