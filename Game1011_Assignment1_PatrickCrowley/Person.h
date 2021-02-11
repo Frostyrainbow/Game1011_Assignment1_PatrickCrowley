@@ -2,7 +2,9 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-
+enum StudentType{NONGAMINGSTUDENT, GAMINGSTUDENT};
+enum StreamingService{NETFLIX, DISNEY, YOUTUBE, TIKTOK, HULU};
+enum GamingPlatform{XBOX, PS4, SWITCH, PC};
 //Abstract base class
 class Person
 {
@@ -10,17 +12,24 @@ public:
 	//Constuctor
 	Person(string a_name, int a_age);
 	//Destructor
-	virtual ~Person();
+	virtual ~Person() = default;
 	//Getters
-	virtual string getName();
-	virtual int getAge();
+	string getName();
+	int getAge();
 	//Setters
-	virtual void setName(string name);
-	virtual void setAge(int age);
-
+	void setName(string name);
+	void setAge(int age);
+	virtual void DisplayInfo() = 0;
+	virtual float getHoursSpent() = 0;
+	virtual StudentType GetStudentType() = 0;
+	virtual StreamingService GetStreamingService() = 0;
+	virtual GamingPlatform GetGamingPlatform() = 0;
 protected:
 	string m_name;
 	int m_age;
+	StudentType m_studenttype;
+	StreamingService m_stream;
+	GamingPlatform m_gamingplatform;
 };
 
 //Student class
@@ -30,27 +39,51 @@ public:
 	//Constuctor
 	Student(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester) : Person(a_name, a_age)
 	{
-		m_name = a_name;
-		m_age = a_age;
-		m_collegeName = a_collegeName;
-		m_programName = a_programName;
-		m_currentSemester = a_currentSemester;
+		setName(a_name);
+		setAge(a_age);
+		setCollegeName(a_collegeName);
+		setProgramName(a_programName);
+		setCurrentSemster(a_currentSemester);
 	}
 	//Destructor
-	~Student();
+	~Student() = default;
 	//Getters
-	string getCollegeName();
-	string getProgramName();
-	int getCurrentSemster();
+	string getCollegeName() const;
+	string getProgramName() const;
+	int getCurrentSemster() const;
 	//Setters
 	void setCollegeName(string name);
 	void setProgramName(string name);
 	void setCurrentSemster(int semester);
-
+	void setHoursSpent(float hours);
+	void setStudentType(StudentType type);
+	//Overrides
+	void DisplayInfo() override
+	{
+		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
+			<< getProgramName();
+	}
+	float getHoursSpent() override
+	{
+		return m_hoursSpent;
+	}
+	StudentType GetStudentType() override
+	{
+		return m_studenttype;
+	}
+	StreamingService GetStreamingService() override
+	{
+		return m_stream;
+	}
+	GamingPlatform GetGamingPlatform() override
+	{
+		return m_gamingplatform;
+	}
 protected:
 	string m_collegeName;
 	string m_programName;
 	int m_currentSemester;
+	float m_hoursSpent;
 };
 
 //NonGamingStudent class
@@ -58,29 +91,33 @@ class NonGamingStudent : public Student
 {
 public:
 	//Constuctor
-	NonGamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_streamingService, float a_hoursSpent) 
+	NonGamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, StreamingService a_streamingService, float a_hoursSpent)
 	: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{
-		m_name = a_name;
-		m_age = a_age;
-		m_collegeName = a_collegeName;
-		m_programName = a_programName;
-		m_currentSemester = a_currentSemester;
-		m_streamingService = a_streamingService;
-		m_hoursSpentStreaming = a_hoursSpent;
+		setName(a_name);
+		setAge(a_age);
+		setCollegeName(a_collegeName);
+		setProgramName(a_programName);
+		setCurrentSemster(a_currentSemester);
+		setStreamingService(a_streamingService);
+		setHoursSpent(a_hoursSpent);
+		setStudentType(NONGAMINGSTUDENT);
 	}
 	//Destructor
-	~NonGamingStudent();
+	~NonGamingStudent() = default;
 	//Getters
-	string getStreamingService();
-	float getHoursSpentStreaming();
+	
 	//Setters
-	void setStreamingService(string name);
-	void setHoursSpentStreaming(float hours);
+	void setStreamingService(StreamingService name);
+	//Overrides
+	void DisplayInfo() override
+	{
+		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
+			<< getProgramName() << "\nStreaming Platform: " << m_streaming[GetStreamingService()] << " | Time spent Streaming: " << getHoursSpent() << " hours\n\n";
+	}
 
 private:
-	string m_streamingService;
-	float m_hoursSpentStreaming;
+	string m_streaming[5] = { "Netflix", "Disney+", "YouTube", "TikTok", "Hulu" };
 };
 
 //GamingStudent class
@@ -88,27 +125,31 @@ class GamingStudent : public Student
 {
 public:
 	//Constuctor
-	GamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_gamingPlatform, float a_hoursSpent)
+	GamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, GamingPlatform a_gamingPlatform, float a_hoursSpent)
 		: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{
-		m_name = a_name;
-		m_age = a_age;
-		m_collegeName = a_collegeName;
-		m_programName = a_programName;
-		m_currentSemester = a_currentSemester;
-		m_gamingPlatform = a_gamingPlatform;
-		m_hoursSpentGaming = a_hoursSpent;
+		setName(a_name);
+		setAge(a_age);
+		setCollegeName(a_collegeName);
+		setProgramName(a_programName);
+		setCurrentSemster(a_currentSemester);
+		setGamingPlatform(a_gamingPlatform);
+		setHoursSpent(a_hoursSpent);
+		setStudentType(GAMINGSTUDENT);
 	}
 	//Destructor
-	~GamingStudent();
+	~GamingStudent() = default;
 	//Getters
-	string getGamingPlatform();
-	float getHoursSpentGaming();
+	
 	//Setters
-	void setGamingPlatform(string name);
-	void setHoursSpentGaming(float hours);
+	void setGamingPlatform(GamingPlatform name);
+	//Overrides
+	void DisplayInfo() override
+	{
+		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
+			<< getProgramName() << "\nGaming Platform: " << m_gaming[GetGamingPlatform()] << " | Time spent Gaming: " << getHoursSpent() << " hours\n\n";
+	}
 
 private:
-	string m_gamingPlatform;
-	float m_hoursSpentGaming;
+	string m_gaming[4] = { "Xbox One X", "Playstation 4", "Nintendo Switch", "PC" };
 };
