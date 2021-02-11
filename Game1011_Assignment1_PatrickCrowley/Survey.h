@@ -18,7 +18,8 @@ public:
 	void setSurvey(int surveyNumb, int randNumb, string names[], int ages[], string streaming[], string gaming[], string college[], string program[], Student* students[]);
 	void DisplaySurvey();
 private:
-	Student* Students[1] = { nullptr };
+	Student* Students[500] = {nullptr};
+	Student* testStudent;
 	int m_surveyNumber;
 	int m_randNumb;
 	string m_names[10] = {"John", "Bob", "Cameron", "Patrick", "Valentine", "Wallace", "Joss", "Tom", "Alex", "Doom Slayer"};

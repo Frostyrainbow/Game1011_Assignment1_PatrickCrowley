@@ -5,6 +5,7 @@ int Survey::getSurveyNumb()
 	return m_surveyNumber;
 }
 
+
 void Survey::setSurveyNumb(int survey)
 {
 	m_surveyNumber = survey;
@@ -19,25 +20,37 @@ void Survey::setSurvey(int surveyNumb, int randNumb, string names[], int ages[],
 		randNumb = rand() % 2 + 1;
 		if (randNumb == 1)
 		{
-			students[i] = new GamingStudent(names[rand() % 10], ages[rand() % 5], college[rand() % 5], program[rand() % 3], rand() % 4 + 1, gaming[rand() % 4], rand() % 30 + 5);
+			students[i] = new GamingStudent(names[(rand() % 10)], ages[(rand() % 5)], college[(rand() % 5)],
+			                                program[(rand() % 3)], (rand() % 4 + 1), gaming[(rand() % 4)],
+			                                (rand() % 30 + 5));
 		}
 		if(randNumb==2)
 		{
-			students[i] = new NonGamingStudent(names[rand() % 10], ages[rand() % 5], college[rand() % 5], program[rand() % 3 + 3], rand() % 4 + 1, streaming[rand() % 5], rand() % 30 + 5);	
+			students[i] = new NonGamingStudent(names[(rand() % 10)], ages[(rand() % 5)], college[(rand() % 5)],
+			                                   program[(rand() % 3 + 3)], rand() % 4 + 1, streaming[(rand() % 6)],
+			                                   (rand() % 30 + 5));
 		}
 		//cout << i + 1 << ") ";
 		//students[i]->DisplayInfo();
+		Students[i] = students[i];
 	}
+	
 }
 
 void Survey::DisplaySurvey()
 {
-	
-	/*for(int i = 0; i < m_surveyNumber; i++)
-	{	*/
-		Students[0]->DisplayInfo();
-	//}
+	for(int i = 0; i < m_surveyNumber; i++)
+	{
+		Student* tempCharacter = Students[i];
+		if(tempCharacter == nullptr)
+		{
+			continue;
+		}
+		tempCharacter->DisplayInfo();
+	}
 }
+
+
 
 
 //(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_gamingPlatform, float a_hoursSpent)

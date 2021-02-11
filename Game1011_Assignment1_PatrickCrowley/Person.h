@@ -2,7 +2,9 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-
+enum Type {NONGAMINGSTUDENT, GAMINGSTUDENT};
+enum Stream { NETFLIX, DISNEY, YOUTUBE, TIKTOK, HULU };
+enum Game { XBOX, PLAYSTATION, NINTENDO, PC };
 //Abstract base class
 class Person
 {
@@ -18,7 +20,7 @@ public:
 	void setName(string name);
 	void setAge(int age);
 	virtual void DisplayInfo() = 0;
-
+	virtual Type getType();
 protected:
 	string m_name;
 	int m_age;
@@ -47,7 +49,11 @@ public:
 	void setCollegeName(string name);
 	void setProgramName(string name);
 	void setCurrentSemster(int semester);
-
+	void DisplayInfo() override
+	{
+		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
+			<< getProgramName();
+	}
 
 protected:
 	string m_collegeName;
@@ -70,24 +76,31 @@ public:
 		setCurrentSemster(a_currentSemester);
 		setStreamingService(a_streamingService);
 		setHoursSpentStreaming(a_hoursSpent);
+		setType(m_type);
 	}
 	//Destructor
 	~NonGamingStudent() = default;
 	//Getters
 	string getStreamingService() const;
 	float getHoursSpentStreaming() const;
+	Type getType() override
+	{
+		return m_type;
+	}
 	//Setters
 	void setStreamingService(string name);
 	void setHoursSpentStreaming(float hours);
+	void setType(Type type);
 	void DisplayInfo() override
 	{
-		std::cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
+		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
 			<< getProgramName() << "\nStreaming Platform: " << getStreamingService() << " | Time spent Streaming: " << getHoursSpentStreaming() << " hours\n\n";
 	}
 
 private:
 	string m_streamingService;
 	float m_hoursSpentStreaming;
+	Type m_type;
 };
 
 //GamingStudent class
@@ -105,21 +118,28 @@ public:
 		setCurrentSemster(a_currentSemester);
 		setGamingPlatform(a_gamingPlatform);
 		setHoursSpentGaming(a_hoursSpent);
+		setType(m_type);
 	}
 	//Destructor
 	~GamingStudent() = default;
 	//Getters
 	string getGamingPlatform() const;
 	float getHoursSpentGaming() const;
+	Type getType() override
+	{
+		return m_type;
+	}
 	//Setters
 	void setGamingPlatform(string name);
 	void setHoursSpentGaming(float hours);
+	void setType(Type type);
 	void DisplayInfo() override
 	{
-		std::cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
+		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
 			<< getProgramName() << "\nGaming Platform: " << getGamingPlatform() << " | Time spent Gaming: " << getHoursSpentGaming() << " hours\n\n";
 	}
 private:
 	string m_gamingPlatform;
 	float m_hoursSpentGaming;
+	Type m_type;
 };
