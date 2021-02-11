@@ -46,15 +46,15 @@ void Student::setStudentType(StudentType type)
 }
 
 //Non Gaming Student
-void NonGamingStudent::setStreamingService(string name)
+void NonGamingStudent::setStreamingService(StreamingService name)
 {
-	m_streamingService = name;
+	m_stream = name;
 }
 
 //Gaming Student
-void GamingStudent::setGamingPlatform(string name)
+void GamingStudent::setGamingPlatform(GamingPlatform name)
 {
-	m_gamingPlatform = name;
+	m_gamingplatform = name;
 }
 
 

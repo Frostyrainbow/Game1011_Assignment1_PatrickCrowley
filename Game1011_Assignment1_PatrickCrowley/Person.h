@@ -3,6 +3,8 @@
 #include <stdlib.h>
 using namespace std;
 enum StudentType{NONGAMINGSTUDENT, GAMINGSTUDENT};
+enum StreamingService{NETFLIX, DISNEY, YOUTUBE, TIKTOK, HULU};
+enum GamingPlatform{XBOX, PS4, SWITCH, PC};
 //Abstract base class
 class Person
 {
@@ -18,14 +20,16 @@ public:
 	void setName(string name);
 	void setAge(int age);
 	virtual void DisplayInfo() = 0;
-	virtual string getStreamingService() = 0;
-	virtual string getGamingPlatform() = 0;
 	virtual float getHoursSpent() = 0;
 	virtual StudentType GetStudentType() = 0;
+	virtual StreamingService GetStreamingService() = 0;
+	virtual GamingPlatform GetGamingPlatform() = 0;
 protected:
 	string m_name;
 	int m_age;
 	StudentType m_studenttype;
+	StreamingService m_stream;
+	GamingPlatform m_gamingplatform;
 };
 
 //Student class
@@ -59,14 +63,6 @@ public:
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
 			<< getProgramName();
 	}
-	string getStreamingService() override 
-	{
-		return "invalid";
-	}
-	string getGamingPlatform() override
-	{
-		return "invalid";
-	}
 	float getHoursSpent() override
 	{
 		return m_hoursSpent;
@@ -74,6 +70,14 @@ public:
 	StudentType GetStudentType() override
 	{
 		return m_studenttype;
+	}
+	StreamingService GetStreamingService() override
+	{
+		return m_stream;
+	}
+	GamingPlatform GetGamingPlatform() override
+	{
+		return m_gamingplatform;
 	}
 protected:
 	string m_collegeName;
@@ -87,7 +91,7 @@ class NonGamingStudent : public Student
 {
 public:
 	//Constuctor
-	NonGamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_streamingService, float a_hoursSpent)
+	NonGamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, StreamingService a_streamingService, float a_hoursSpent)
 	: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{
 		setName(a_name);
@@ -104,20 +108,16 @@ public:
 	//Getters
 	
 	//Setters
-	void setStreamingService(string name);
-	void setHoursSpentStreaming(float hours);
+	void setStreamingService(StreamingService name);
 	//Overrides
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
-			<< getProgramName() << "Type: " << GetStudentType() << "\nStreaming Platform: " << getStreamingService() << " | Time spent Streaming: " << getHoursSpent() << " hours\n\n";
+			<< getProgramName() << "\nStreaming Platform: " << m_streaming[GetStreamingService()] << " | Time spent Streaming: " << getHoursSpent() << " hours\n\n";
 	}
-	string getStreamingService() override
-	{
-		return m_streamingService;
-	}
+
 private:
-	string m_streamingService;
+	string m_streaming[5] = { "Netflix", "Disney+", "YouTube", "TikTok", "Hulu" };
 };
 
 //GamingStudent class
@@ -125,7 +125,7 @@ class GamingStudent : public Student
 {
 public:
 	//Constuctor
-	GamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_gamingPlatform, float a_hoursSpent)
+	GamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, GamingPlatform a_gamingPlatform, float a_hoursSpent)
 		: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{
 		setName(a_name);
@@ -142,19 +142,14 @@ public:
 	//Getters
 	
 	//Setters
-	void setGamingPlatform(string name);
-	void setHoursSpentGaming(float hours);
+	void setGamingPlatform(GamingPlatform name);
 	//Overrides
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
-			<< getProgramName() << "Type: " << GetStudentType() << "\nGaming Platform: " << getGamingPlatform() << " | Time spent Gaming: " << getHoursSpent() << " hours\n\n";
-	}
-	string getGamingPlatform() override
-	{
-		return m_gamingPlatform;
+			<< getProgramName() << "\nGaming Platform: " << m_gaming[GetGamingPlatform()] << " | Time spent Gaming: " << getHoursSpent() << " hours\n\n";
 	}
 
 private:
-	string m_gamingPlatform;
+	string m_gaming[4] = { "Xbox One X", "Playstation 4", "Nintendo Switch", "PC" };
 };
