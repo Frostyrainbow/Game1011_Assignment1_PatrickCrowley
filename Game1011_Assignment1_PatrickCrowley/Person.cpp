@@ -35,27 +35,21 @@ void Student::setCurrentSemster(int semester)
 	m_currentSemester = semester;
 }
 
+void Student::setHoursSpent(float hours)
+{
+	m_hoursSpent = hours;
+}
+
 //Non Gaming Student
 void NonGamingStudent::setStreamingService(string name)
 {
 	m_streamingService = name;
 }
 
-void NonGamingStudent::setHoursSpentStreaming(float hours)
-{
-	m_hoursSpentStreaming = hours;
-}
-
-
 //Gaming Student
 void GamingStudent::setGamingPlatform(string name)
 {
 	m_gamingPlatform = name;
-}
-
-void GamingStudent::setHoursSpentGaming(float hours)
-{
-	m_hoursSpentGaming = hours;
 }
 
 
