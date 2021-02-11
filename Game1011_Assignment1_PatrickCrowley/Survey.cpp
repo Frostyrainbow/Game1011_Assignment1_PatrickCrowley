@@ -30,19 +30,8 @@ void Survey::setSurvey(int surveyNumb, int randNumb, string names[], int ages[],
 			m_students[i] = new NonGamingStudent(names[(rand() % 10)], ages[(rand() % 5)], college[(rand() % 5)],
 			                                   program[(rand() % 3 + 3)], rand() % 4 + 1, static_cast<StreamingService>(rand() % 5),
 			                                   (rand() % 30 + 5));
-		}
-		//Students[i] = students[i];
-		
-	}
-	
-}
-
-void Survey::DisplaySurvey() //for testing and debugging purposes
-{
-	for(int i = 0; i < m_surveyNumber; i++)
-	{
-		m_students[i]->DisplayInfo();
-	}
+		}		
+	}	
 }
 
 void Survey::Process()
@@ -114,15 +103,16 @@ void Survey::Process()
 			tempLoc2 = i;
 		}
 	}
-	
+	cout << "\nNON-GAMING STUDENTS\n"
+	<< "_____________________________________________________________________\n\n";
 	cout << "Number of Non Gaming Students: " << studentNumb[0] << "\nAverage Age: " << studentAge[0] / studentNumb[0];
 	if(tempLoc == tempLoc2)
 	{
-		cout << "\nFavorite Streaming Service: " << m_streaming[tempLoc] << "\nAverage Hours Spent Streaming: " << studentHours[0] / studentNumb[0] << "\n\n";
+		cout << "\nFavorite Streaming Service: " << m_streaming[tempLoc] << "\nAverage Hours Spent Streaming: " << studentHours[0] / studentNumb[0] << "\n";
 	}
 	else if(tempLoc != tempLoc2)
 	{
-		cout << "\nFavorite Streaming Services: " << m_streaming[tempLoc] << " & " << m_streaming[tempLoc2] << " - It's a tie!\nAverage Hours Spent Streaming: " << studentHours[0] / studentNumb[0] << "\n\n";
+		cout << "\nFavorite Streaming Services: " << m_streaming[tempLoc] << " & " << m_streaming[tempLoc2] << " - It's a tie!\nAverage Hours Spent Streaming Per Week: " << studentHours[0] / studentNumb[0] << "\n";
 	}
 
 
@@ -143,20 +133,19 @@ void Survey::Process()
 			tempLoc2 = i;
 		}
 	}
-
+	cout << "_____________________________________________________________________\n\n"
+	<< "GAMING STUDENTS\n" << "_____________________________________________________________________\n\n";
 	cout << "Number of Gaming Students: " << studentNumb[1] << "\nAverage Age: " << studentAge[1] / studentNumb[1];
 	if (tempLoc == tempLoc2)
 	{
-		cout << "\nFavorite Gaming Platform: " << m_gaming[tempLoc] << "\nAverage Hours Spent Gaming: " << studentHours[1] / studentNumb[1] << "\n\n";
+		cout << "\nFavorite Gaming Platform: " << m_gaming[tempLoc] << "\nAverage Hours Spent Gaming: " << studentHours[1] / studentNumb[1] << "\n";
 	}
 	else if (tempLoc != tempLoc2)
 	{
-		cout << "\nFavorite Gaming Platform: " << m_gaming[tempLoc] << " & " << m_gaming[tempLoc2] << " - It's a tie!\nAverage Hours Spent Gaming: " << studentHours[1] / studentNumb[1] << "\n\n";
+		cout << "\nFavorite Gaming Platform: " << m_gaming[tempLoc] << " & " << m_gaming[tempLoc2] << " - It's a tie!\nAverage Hours Spent Gaming Per Week: " << studentHours[1] / studentNumb[1] << "\n";
 	}
+	cout << "_____________________________________________________________________\n";
 }
 
-void Survey::SetStudent(int surveyNumb, Student* student[])
-{
-}
 
 

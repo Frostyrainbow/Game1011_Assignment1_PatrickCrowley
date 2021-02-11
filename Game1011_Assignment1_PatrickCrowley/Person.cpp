@@ -1,6 +1,6 @@
 #include "Person.h"
-//setters
 
+//Person
 Person::Person(string a_name, int a_age)
 {
 	m_name = a_name;
@@ -8,7 +8,6 @@ Person::Person(string a_name, int a_age)
 	
 }
 
-//Person
 string Person::getName()
 {
 	return m_name;
@@ -18,6 +17,17 @@ int Person::getAge()
 {
 	return m_age;
 }
+
+void Person::setName(string name)
+{
+	m_name = name;
+}
+
+void Person::setAge(int age)
+{
+	m_age = age;
+}
+
 
 //Student
 void Student::setCollegeName(string name)
@@ -57,21 +67,6 @@ void GamingStudent::setGamingPlatform(GamingPlatform name)
 	m_gamingplatform = name;
 }
 
-
-//getters
-
-//Person
-void Person::setName(string name)
-{
-	m_name = name;
-}
-
-void Person::setAge(int age)
-{
-	m_age = age;
-}
-
-//Student
 string Student::getCollegeName() const
 {
 	return m_collegeName;

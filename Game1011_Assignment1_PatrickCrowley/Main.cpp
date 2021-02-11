@@ -1,26 +1,33 @@
 #include "Survey.h"
-
+#include <iostream>
+int temp;
 using namespace std;
 int main()
 {
-	int temp;
-	cout << "Welcome to College Student Survey Processor!\n\nThe purpose of this application is to process a given amount of students"
-		<< "and present to you the their average age,\nhours of consumption of entertainment per week, and their preffered outlets for this entertainment!"
-		<< "\nThe survey splits the students into two catagories: Non Gaming Students, and Gaming Students."
-		<<"\n\nReady to begin? Please enter how many students you would like to be processed: ";
+	cout << "Welcome to the College Student Survey Processor!\n\nThe purpose of this application is to process a survey of students"
+	<< "\nand present to you some neat Statistics."
+	<< "\n\nThese Statistics include:"
+	<< "\n_______________________________________________________________________________"
+	<< "\n|1.) The Number of Students in Gaming / Non Gaming Programs.                  |"
+	<< "\n|2.) The average Age of all Students in said these two catagories.            |"
+	<< "\n|3.) The most preffered streaming service of Non Gaming Students.             |"
+	<< "\n|4.) The most preffered gaming platform of Gaming Students.                   |"
+	<< "\n|5.) The average amount of hours Students spend in their entertainment outlet.|"
+	<< "\n|_____________________________________________________________________________|"
+		<<"\n\nReady to begin?\n\nPlease enter the amount of students you would like to be processed: ";
 	cin >> temp;
 	
 	while(temp > 500)
 	{
 		system("cls");
-		cout << "That number is too big!\n\n" << "Please enter a lower amount of students to create (Max 500!) ";
+		cout << "That number is too big!\n\n" << "Please enter a different amount of students to create (Max 500!) ";
 		cin >> temp;
 	}
 	system("cls");
 	Survey StudentSurvey(temp);
-	StudentSurvey.DisplaySurvey();
-	cout << "\n\n\n";
-	//cout << "Survey Created. Are you ready to process the survey?\n\nPlease input selection: ";
+	cout << "Survey Created. Are you ready to process the survey?\n\n";
+	system("pause");
+	system("cls");
 	StudentSurvey.Process();
 	
 }

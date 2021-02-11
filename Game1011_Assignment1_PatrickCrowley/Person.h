@@ -9,10 +9,9 @@ enum GamingPlatform{XBOX, PS4, SWITCH, PC};
 class Person
 {
 public:
-	//Constuctor
 	Person(){}
 	Person(string a_name, int a_age);
-	//Destructor
+
 	virtual ~Person() = default;
 	//Getters
 	string getName();
@@ -20,6 +19,7 @@ public:
 	//Setters
 	void setName(string name);
 	void setAge(int age);
+	//Pure Virtuals
 	virtual void DisplayInfo() = 0;
 	virtual float getHoursSpent() = 0;
 	virtual StudentType GetStudentType() = 0;
@@ -38,7 +38,6 @@ class Student : public Person
 {
 public:
 	Student(){}
-	//Constuctor
 	Student(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester) : Person(a_name, a_age)
 	{
 		setName(a_name);
@@ -47,7 +46,7 @@ public:
 		setProgramName(a_programName);
 		setCurrentSemster(a_currentSemester);
 	}
-	//Destructor
+
 	~Student() = default;
 	//Getters
 	string getCollegeName() const;
@@ -92,7 +91,6 @@ protected:
 class NonGamingStudent : public Student
 {
 public:
-	//Constuctor
 	NonGamingStudent(){}
 	NonGamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, StreamingService a_streamingService, float a_hoursSpent)
 	: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
@@ -106,11 +104,11 @@ public:
 		setHoursSpent(a_hoursSpent);
 		setStudentType(NONGAMINGSTUDENT);
 	}
-	//Destructor
+
 	~NonGamingStudent() = default;
-	//Setters
+
 	void setStreamingService(StreamingService name);
-	//Overrides
+
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
@@ -125,7 +123,6 @@ private:
 class GamingStudent : public Student
 {
 public:
-	//Constuctor
 	GamingStudent(){}
 	GamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, GamingPlatform a_gamingPlatform, float a_hoursSpent)
 		: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
@@ -139,13 +136,11 @@ public:
 		setHoursSpent(a_hoursSpent);
 		setStudentType(GAMINGSTUDENT);
 	}
-	//Destructor
+
 	~GamingStudent() = default;
-	//Getters
-	
-	//Setters
+
 	void setGamingPlatform(GamingPlatform name);
-	//Overrides
+
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "

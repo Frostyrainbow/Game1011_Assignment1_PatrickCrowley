@@ -16,9 +16,7 @@ public:
 	//Setters
 	void setSurveyNumb(int survey);
 	void setSurvey(int surveyNumb, int randNumb, string names[], int ages[], string college[], string program[]);
-	void DisplaySurvey();
 	void Process();
-	void SetStudent(const int surveyNumb, Student* student[]);
 private:
 	Student** m_students;
 	int m_surveyNumber;
