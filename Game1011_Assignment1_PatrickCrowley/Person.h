@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
+enum StudentType{NONGAMINGSTUDENT, GAMINGSTUDENT};
 //Abstract base class
 class Person
 {
@@ -20,9 +21,11 @@ public:
 	virtual string getStreamingService() = 0;
 	virtual string getGamingPlatform() = 0;
 	virtual float getHoursSpent() = 0;
+	virtual StudentType GetStudentType() = 0;
 protected:
 	string m_name;
 	int m_age;
+	StudentType m_studenttype;
 };
 
 //Student class
@@ -49,6 +52,7 @@ public:
 	void setProgramName(string name);
 	void setCurrentSemster(int semester);
 	void setHoursSpent(float hours);
+	void setStudentType(StudentType type);
 	//Overrides
 	void DisplayInfo() override
 	{
@@ -58,14 +62,18 @@ public:
 	string getStreamingService() override 
 	{
 		return "invalid";
-	};
+	}
 	string getGamingPlatform() override
 	{
 		return "invalid";
-	};
+	}
 	float getHoursSpent() override
 	{
 		return m_hoursSpent;
+	}
+	StudentType GetStudentType() override
+	{
+		return m_studenttype;
 	}
 protected:
 	string m_collegeName;
@@ -89,6 +97,7 @@ public:
 		setCurrentSemster(a_currentSemester);
 		setStreamingService(a_streamingService);
 		setHoursSpent(a_hoursSpent);
+		setStudentType(NONGAMINGSTUDENT);
 	}
 	//Destructor
 	~NonGamingStudent() = default;
@@ -101,7 +110,7 @@ public:
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
-			<< getProgramName() << "\nStreaming Platform: " << getStreamingService() << " | Time spent Streaming: " << getHoursSpent() << " hours\n\n";
+			<< getProgramName() << "Type: " << GetStudentType() << "\nStreaming Platform: " << getStreamingService() << " | Time spent Streaming: " << getHoursSpent() << " hours\n\n";
 	}
 	string getStreamingService() override
 	{
@@ -126,6 +135,7 @@ public:
 		setCurrentSemster(a_currentSemester);
 		setGamingPlatform(a_gamingPlatform);
 		setHoursSpent(a_hoursSpent);
+		setStudentType(GAMINGSTUDENT);
 	}
 	//Destructor
 	~GamingStudent() = default;
@@ -138,7 +148,7 @@ public:
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
-			<< getProgramName() << "\nGaming Platform: " << getGamingPlatform() << " | Time spent Gaming: " << getHoursSpent() << " hours\n\n";
+			<< getProgramName() << "Type: " << GetStudentType() << "\nGaming Platform: " << getGamingPlatform() << " | Time spent Gaming: " << getHoursSpent() << " hours\n\n";
 	}
 	string getGamingPlatform() override
 	{

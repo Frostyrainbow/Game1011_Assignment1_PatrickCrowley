@@ -49,7 +49,13 @@ void Survey::DisplaySurvey()
 	}
 }
 
-
+void Survey::Process()
+{
+	for (int i = 0; i < getSurveyNumb(); i++)
+	{
+		cout << Students[i]->GetStudentType() << endl;
+	}
+}
 
 
 //(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, string a_gamingPlatform, float a_hoursSpent)

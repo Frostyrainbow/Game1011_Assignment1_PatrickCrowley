@@ -17,9 +17,9 @@ public:
 	void setSurveyNumb(int survey);
 	void setSurvey(int surveyNumb, int randNumb, string names[], int ages[], string streaming[], string gaming[], string college[], string program[], Student* students[]);
 	void DisplaySurvey();
+	void Process();
 private:
 	Student* Students[500] = {nullptr};
-	Student* testStudent;
 	int m_surveyNumber;
 	int m_randNumb;
 	string m_names[10] = {"John Doe", "Bob Ross", "Johnny Silverhand", "Geralt of Rivia", "Valerie Valentine", "Nathan Drake", "Master Chief", "Leon Kennedy", "Ezio Auditore", "Doom Slayer"};

@@ -14,6 +14,7 @@ int main()
 		cin >> temp;
 	}
 
-	StudentSurvey.DisplaySurvey();
+	//StudentSurvey.DisplaySurvey();
+	StudentSurvey.Process();
 	
 }

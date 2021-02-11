@@ -40,6 +40,11 @@ void Student::setHoursSpent(float hours)
 	m_hoursSpent = hours;
 }
 
+void Student::setStudentType(StudentType type)
+{
+	m_studenttype = type;
+}
+
 //Non Gaming Student
 void NonGamingStudent::setStreamingService(string name)
 {
