@@ -32,7 +32,7 @@ void Survey::setSurvey(int surveyNumb, int randNumb, string names[], int ages[],
 		}
 		//cout << i + 1 << ") ";
 		//students[i]->DisplayInfo();
-		Students[i] = students[i];
+		//Students[i] = students[i];
 	}
 	
 }

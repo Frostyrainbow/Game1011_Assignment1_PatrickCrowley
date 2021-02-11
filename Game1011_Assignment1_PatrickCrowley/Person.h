@@ -20,7 +20,6 @@ public:
 	void setName(string name);
 	void setAge(int age);
 	virtual void DisplayInfo() = 0;
-	virtual Type getType();
 protected:
 	string m_name;
 	int m_age;
@@ -76,17 +75,13 @@ public:
 		setCurrentSemster(a_currentSemester);
 		setStreamingService(a_streamingService);
 		setHoursSpentStreaming(a_hoursSpent);
-		setType(m_type);
 	}
 	//Destructor
 	~NonGamingStudent() = default;
 	//Getters
 	string getStreamingService() const;
 	float getHoursSpentStreaming() const;
-	Type getType() override
-	{
-		return m_type;
-	}
+
 	//Setters
 	void setStreamingService(string name);
 	void setHoursSpentStreaming(float hours);
@@ -100,7 +95,7 @@ public:
 private:
 	string m_streamingService;
 	float m_hoursSpentStreaming;
-	Type m_type;
+
 };
 
 //GamingStudent class
@@ -118,17 +113,13 @@ public:
 		setCurrentSemster(a_currentSemester);
 		setGamingPlatform(a_gamingPlatform);
 		setHoursSpentGaming(a_hoursSpent);
-		setType(m_type);
 	}
 	//Destructor
 	~GamingStudent() = default;
 	//Getters
 	string getGamingPlatform() const;
 	float getHoursSpentGaming() const;
-	Type getType() override
-	{
-		return m_type;
-	}
+
 	//Setters
 	void setGamingPlatform(string name);
 	void setHoursSpentGaming(float hours);
@@ -141,5 +132,4 @@ public:
 private:
 	string m_gamingPlatform;
 	float m_hoursSpentGaming;
-	Type m_type;
 };
