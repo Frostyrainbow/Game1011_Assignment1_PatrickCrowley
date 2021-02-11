@@ -88,24 +88,9 @@ int Student::getCurrentSemster() const
 	return m_currentSemester;
 }
 
-//Non Gaming Student
-string NonGamingStudent::getStreamingService() const
-{
-	return m_streamingService;
-}
 
-float NonGamingStudent::getHoursSpentStreaming() const
-{
-	return m_hoursSpentStreaming;
-}
 
-//Gaming Student
-string GamingStudent::getGamingPlatform() const
-{
-	return m_gamingPlatform;
-}
 
-float GamingStudent::getHoursSpentGaming() const
-{
-	return m_hoursSpentGaming;
-}
+
+
+

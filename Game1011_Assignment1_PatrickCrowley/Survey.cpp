@@ -30,9 +30,8 @@ void Survey::setSurvey(int surveyNumb, int randNumb, string names[], int ages[],
 			                                   program[(rand() % 3 + 3)], rand() % 4 + 1, streaming[(rand() % 6)],
 			                                   (rand() % 30 + 5));
 		}
-		//cout << i + 1 << ") ";
-		//students[i]->DisplayInfo();
 		Students[i] = students[i];
+		
 	}
 	
 }

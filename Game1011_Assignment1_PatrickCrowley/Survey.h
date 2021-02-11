@@ -22,7 +22,7 @@ private:
 	Student* testStudent;
 	int m_surveyNumber;
 	int m_randNumb;
-	string m_names[10] = {"John", "Bob", "Cameron", "Patrick", "Valentine", "Wallace", "Joss", "Tom", "Alex", "Doom Slayer"};
+	string m_names[10] = {"John Doe", "Bob Ross", "Johnny Silverhand", "Geralt of Rivia", "Valerie Valentine", "Nathan Drake", "Master Chief", "Leon Kennedy", "Ezio Auditore", "Doom Slayer"};
 	string m_streaming[5] = { "Netflix", "Disney+", "YouTube", "TikTok", "Hulu" };
 	string m_gaming[4] = { "Xbox One X", "Playstation 4", "Nintendo Switch", "PC" };
 	string m_college[5] = { "George Brown", "Centennial", "Seneca", "Algonquin", "Fanshawe" };

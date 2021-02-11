@@ -20,6 +20,10 @@ public:
 	void setName(string name);
 	void setAge(int age);
 	virtual void DisplayInfo() = 0;
+	virtual string getStreamingService() = 0;
+	virtual float getHoursSpentStreaming() = 0;
+	virtual string getGamingPlatform() = 0;
+	virtual float getHoursSpentGaming() = 0;
 protected:
 	string m_name;
 	int m_age;
@@ -79,19 +83,25 @@ public:
 	//Destructor
 	~NonGamingStudent() = default;
 	//Getters
-	string getStreamingService() const;
-	float getHoursSpentStreaming() const;
-
+	
 	//Setters
 	void setStreamingService(string name);
 	void setHoursSpentStreaming(float hours);
 	void setType(Type type);
+	//Overrides
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
 			<< getProgramName() << "\nStreaming Platform: " << getStreamingService() << " | Time spent Streaming: " << getHoursSpentStreaming() << " hours\n\n";
 	}
-
+	string getStreamingService() override
+	{
+		return m_streamingService;
+	}
+	float getHoursSpentStreaming() override
+	{
+		return m_hoursSpentStreaming;
+	}
 private:
 	string m_streamingService;
 	float m_hoursSpentStreaming;
@@ -117,17 +127,24 @@ public:
 	//Destructor
 	~GamingStudent() = default;
 	//Getters
-	string getGamingPlatform() const;
-	float getHoursSpentGaming() const;
-
+	
 	//Setters
 	void setGamingPlatform(string name);
 	void setHoursSpentGaming(float hours);
 	void setType(Type type);
+	//Overrides
 	void DisplayInfo() override
 	{
 		cout << "Name: " << getName() << " | Age: " << getAge() << " | College & Program: " << getCollegeName() << " | "
 			<< getProgramName() << "\nGaming Platform: " << getGamingPlatform() << " | Time spent Gaming: " << getHoursSpentGaming() << " hours\n\n";
+	}
+	string getGamingPlatform() override
+	{
+		return m_gamingPlatform;
+	}
+	float getHoursSpentGaming() override
+	{
+		return m_hoursSpentGaming;
 	}
 private:
 	string m_gamingPlatform;
