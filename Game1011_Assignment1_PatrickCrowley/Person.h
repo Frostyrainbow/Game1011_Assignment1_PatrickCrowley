@@ -10,6 +10,7 @@ class Person
 {
 public:
 	//Constuctor
+	Person(){}
 	Person(string a_name, int a_age);
 	//Destructor
 	virtual ~Person() = default;
@@ -36,6 +37,7 @@ protected:
 class Student : public Person
 {
 public:
+	Student(){}
 	//Constuctor
 	Student(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester) : Person(a_name, a_age)
 	{
@@ -91,6 +93,7 @@ class NonGamingStudent : public Student
 {
 public:
 	//Constuctor
+	NonGamingStudent(){}
 	NonGamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, StreamingService a_streamingService, float a_hoursSpent)
 	: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{
@@ -105,8 +108,6 @@ public:
 	}
 	//Destructor
 	~NonGamingStudent() = default;
-	//Getters
-	
 	//Setters
 	void setStreamingService(StreamingService name);
 	//Overrides
@@ -125,6 +126,7 @@ class GamingStudent : public Student
 {
 public:
 	//Constuctor
+	GamingStudent(){}
 	GamingStudent(string a_name, int a_age, string a_collegeName, string a_programName, int a_currentSemester, GamingPlatform a_gamingPlatform, float a_hoursSpent)
 		: Student(a_name, a_age, a_collegeName, a_programName, a_currentSemester)
 	{

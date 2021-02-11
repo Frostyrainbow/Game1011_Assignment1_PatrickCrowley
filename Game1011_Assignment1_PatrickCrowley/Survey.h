@@ -7,7 +7,7 @@ public:
 	//Constuctor
 	Survey(int surveyNumb)
 	{
-		setSurvey(surveyNumb, m_randNumb, m_names, m_age, m_college, m_program, Students);
+		setSurvey(surveyNumb, m_randNumb, m_names, m_age, m_college, m_program);
 	}
 	//Destructor
 	~Survey() = default;
@@ -15,11 +15,12 @@ public:
 	int getSurveyNumb();
 	//Setters
 	void setSurveyNumb(int survey);
-	void setSurvey(int surveyNumb, int randNumb, string names[], int ages[], string college[], string program[], Student* students[]);
+	void setSurvey(int surveyNumb, int randNumb, string names[], int ages[], string college[], string program[]);
 	void DisplaySurvey();
 	void Process();
+	void SetStudent(const int surveyNumb, Student* student[]);
 private:
-	Student* Students[500] = {nullptr};
+	Student** m_students;
 	int m_surveyNumber;
 	int m_randNumb;
 	string m_names[10] = {"John Doe", "Bob Ross", "Johnny Silverhand", "Geralt of Rivia", "Valerie Valentine", "Nathan Drake", "Master Chief", "Leon Kennedy", "Ezio Auditore", "Doom Slayer"};

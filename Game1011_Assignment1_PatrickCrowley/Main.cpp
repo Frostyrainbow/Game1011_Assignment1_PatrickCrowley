@@ -18,6 +18,9 @@ int main()
 	}
 	system("cls");
 	Survey StudentSurvey(temp);
+	StudentSurvey.DisplaySurvey();
+	cout << "\n\n\n";
+	//cout << "Survey Created. Are you ready to process the survey?\n\nPlease input selection: ";
 	StudentSurvey.Process();
 	
 }

@@ -86,10 +86,3 @@ int Student::getCurrentSemster() const
 {
 	return m_currentSemester;
 }
-
-
-
-
-
-
-
