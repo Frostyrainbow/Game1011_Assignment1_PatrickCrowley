@@ -1,6 +1,7 @@
 #include "Survey.h"
 #include <iostream>
 int temp;
+char choice;
 using namespace std;
 int main()
 {
@@ -25,9 +26,15 @@ int main()
 	}
 	system("cls");
 	Survey StudentSurvey(temp);
-	cout << "Survey Created. Are you ready to process the survey?\n\n";
-	system("pause");
-	system("cls");
-	StudentSurvey.Process();
-	
+	cout << "Survey Created. Are you ready to process the survey?\n\nY: Process Survey\nN: Exit program\n\nSelection: ";
+	cin >> choice;
+	if(choice=='Y')
+	{
+		system("cls");
+		StudentSurvey.Process();
+	}
+	else if(choice == 'N')
+	{
+		cout << "\n\nGoodbye!";
+	}	
 }
